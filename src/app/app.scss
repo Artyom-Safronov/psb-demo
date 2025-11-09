@@ -1,0 +1,31 @@
+header {
+  height: 400px;
+  background-image: url('../../public/gradient-personal-3.svg');
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-color: cornflowerblue;
+}
+
+main {
+  flex: 1;
+}
+
+footer {
+  height: 100px;
+  background-color: #3e3e59;
+}
+
+.footer-contact__value {
+  font-weight: 600;
+  font-size: 20px;
+  line-height: 130%;
+  color: #fff;
+  letter-spacing: 0;
+  text-decoration: none;
+}
+
+.footer-contact__caption {
+  display: block;
+  color: #8d8da6;
+  font-size: 13px;
+}

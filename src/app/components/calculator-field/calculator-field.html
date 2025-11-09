@@ -1,0 +1,27 @@
+<div class="calculator-field">
+  <div class="calculator-field__input-controls">
+    <div class="calculator-field__input-left">
+      <div class="calculator-field__icon calculator-field__icon-left" (click)="onDecrease()">
+        <app-icon-minus-circled></app-icon-minus-circled>
+      </div>
+      <div class="calculator-field__input-wrapper">
+        <label class="calculator-field__input-label">{{label}}</label>
+        <input
+          class="calculator-field__input"
+          [value]="value"
+          (input)="onInput($event.target.value)"
+          [min]="min"
+          [max]="max"
+          [step]="step"
+        />
+      </div>
+    </div>
+    <div class="calculator-field__icon calculator-field__icon-right" (click)="onIncrease()">
+      <app-icon-plus-circled></app-icon-plus-circled>
+    </div>
+  </div>
+  <div class="calculator-field__limits">
+    <div class="calculator-field__limit-min">{{min}}</div>
+    <div class="calculator-field__limit-max">{{max}}</div>
+  </div>
+</div>

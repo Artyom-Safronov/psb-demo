@@ -1,0 +1,67 @@
+@use "sass:color";
+
+$color-map: (
+  primary: #585892,
+  secondary: #e86630,
+);
+
+@mixin button-variant($variant, $color) {
+  $isFilled: $variant == filled;
+  $isOutlined: $variant == outlined;
+  $isText: $variant == text;
+
+  $bg: if($isFilled, if($color == inherit, #ccc, $color), transparent);
+  $border: if(
+    $isText or $isFilled,
+    none,
+    1px solid if($color == inherit, null, $color)
+  );
+  $textColor: if($isFilled, #fff, $color);
+
+  background: $bg;
+  border: $border;
+  color: $textColor;
+}
+
+:host {
+  display: flex;
+  align-items: center;
+  padding: 8px 20px;
+  border: none;
+  font-size: 11px;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+@each $name, $color in $color-map {
+  :host(.app-button--filled.app-button--#{$name}) {
+    @include button-variant(filled, $color);
+  }
+  :host(.app-button--outlined.app-button--#{$name}) {
+    @include button-variant(outlined, $color);
+  }
+  :host(.app-button--text.app-button--#{$name}) {
+    @include button-variant(text, $color);
+  }
+}
+
+:host(.app-button--disabled) {
+  opacity: 0.6;
+  cursor: default;
+  pointer-events: none;
+}
+
+:host(.app-button) .app-button__icon {
+  width: 16px;
+  height: 16px;
+}
+
+:host(.app-button) .app-button__icon--start {
+  margin-right: 10px;
+}
+
+:host(.app-button) .app-button__icon--end {
+  margin-left: 10px;
+}

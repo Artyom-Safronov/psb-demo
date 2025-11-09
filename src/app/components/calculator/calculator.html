@@ -1,0 +1,53 @@
+<div class="calculator">
+  <h2 class="calculator__title">Кредит на любые цели</h2>
+  <div class="calculator__wrapper">
+    <div class="calculator-left">
+      <app-calculator-field
+        label="Сумма кредита"
+        [value]="amount"
+        [min]="minAmount"
+        [max]="maxAmount"
+        [step]="amountStep"
+        (valueChange)="onAmountInput($event.toString())"
+        (increase)="increaseAmount()"
+        (decrease)="decreaseAmount()"
+      ></app-calculator-field>
+
+      <app-calculator-field
+        label="Срок кредита"
+        [value]="term"
+        [min]="minTerm"
+        [max]="maxTerm"
+        [step]="1"
+        (valueChange)="onTermInput($event.toString())"
+        (increase)="increaseTerm()"
+        (decrease)="decreaseTerm()"
+      ></app-calculator-field>
+    </div>
+
+    <div class="calculator-right">
+      <div class="result">
+        <label class="result__inner-title">Ежемесячный платёж</label>
+        <div class="result-field__input-controls">
+          <div class="result-field__input-left">
+            <div class="result-field__icon result-field__icon-left" (click)="decreasePayment()">
+              <app-icon-minus-circled></app-icon-minus-circled>
+            </div>
+            <div class="result-field__input-wrapper">
+          <span
+            class="result-field__sum"
+          >{{monthlyPayment}}</span>
+            </div>
+          </div>
+          <div class="result-field__icon result-field__icon-right" (click)="increasePayment()">
+            <app-icon-plus-circled></app-icon-plus-circled>
+          </div>
+        </div>
+        <div class="result__condition">
+          Расчет платежа предварительный. Не является офертой
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>
